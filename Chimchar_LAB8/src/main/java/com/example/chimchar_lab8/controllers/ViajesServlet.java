@@ -25,6 +25,14 @@ public class ViajesServlet extends HttpServlet {
             case "platinum":
                 request.getRequestDispatcher("usuarioPlatinum.jsp").forward(request,response);
                 break;
+
+            case "crear":
+                request.getRequestDispatcher("crearViaje.jsp").forward(request,response);
+                break;
+
+            case "editar":
+                request.getRequestDispatcher("editarViaje.jsp").forward(request,response);
+                break;
         }
     }
 
