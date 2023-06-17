@@ -57,6 +57,7 @@ CREATE TABLE `mis_viajes` (
   `empresa_seguro_id_empresa_seguro` int NOT NULL,
   `usuarios_id_usuarios` int NOT NULL,
   `costo_total` double NOT NULL,
+  `numero_de_boletos` int NOT NULL,
   PRIMARY KEY (`id_mis_viajes`),
   KEY `fk_viajes_empresa_seguro1_idx` (`empresa_seguro_id_empresa_seguro`),
   KEY `fk_viajes_usuarios1_idx` (`usuarios_id_usuarios`),
@@ -138,4 +139,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-06-16 20:22:04
+-- Dump completed on 2023-06-17  2:32:59

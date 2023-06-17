@@ -10,6 +10,7 @@ import java.sql.SQLException;
 
 public class ViajesDao extends BaseDao {
 
+
     public void editarViajes(String jobId, String jobTitle, int minSalary, int maxSalary) {
 
         try (Connection conn = this.getConnection()) {
