@@ -44,59 +44,63 @@
                       <br>
                     </div>
                     <!-- Login submission form-->
-                    <form>
+                    <form method="POST" action="UsuariosServlet?action=crearUsuarios">
                       <div class="form-floating mb-3">
-                        <input class="form-control" id="name" type="text" placeholder="Ingrese su nombre..." data-sb-validations="required" />
-                        <label for="name">Nombre</label>
+                        <input class="form-control" id="nombre" name="nombre" type="text" placeholder="Ingrese su nombre..." data-sb-validations="required" />
+                        <label for="nombre">Nombre</label>
                         <div class="invalid-feedback" data-sb-feedback="name:required">Se requiere un nombre</div>
                       </div>
 
                       <div class="form-floating mb-3">
-                        <input class="form-control" id="apellido" type="text" placeholder="Ingrese su apellido..." data-sb-validations="required" />
+                        <input class="form-control" id="apellido" name="apellido" type="text" placeholder="Ingrese su apellido..." data-sb-validations="required" />
                         <label for="apellido">Apellido</label>
                         <div class="invalid-feedback" data-sb-feedback="name:required">Se requiere un nombre</div>
                       </div>
 
                       <div class="form-floating mb-3">
-                        <input class="form-control" id="edad" type="text" placeholder="Ingrese su edad..." data-sb-validations="required" />
+                        <input class="form-control" id="edad" name="edad" type="text" placeholder="Ingrese su edad..." data-sb-validations="required" />
                         <label for="edad">Edad</label>
                         <div class="invalid-feedback" data-sb-feedback="name:required">Se requiere su edad</div>
                       </div>
 
                       <div class="form-floating mb-3">
-                        <input class="form-control" id="codigo" type="text" placeholder="Ingrese su codigo PUCP..." data-sb-validations="required" />
+                        <input class="form-control" id="codigo" name="codigo" type="text" placeholder="Ingrese su codigo PUCP..." data-sb-validations="required" />
                         <label for="codigo">Código PUCP</label>
                         <div class="invalid-feedback" data-sb-feedback="name:required">Se requiere su codigo</div>
                       </div>
 
                       <div class="form-floating mb-3">
-                        <input class="form-control" id="email" type="email" placeholder="axxxxxx@pucp.edu.pe" data-sb-validations="required,email" />
-                        <label for="email">Correo PUCP</label>
+                        <input class="form-control" id="correo" name="correo" type="email" placeholder="axxxxxx@pucp.edu.pe" data-sb-validations="required,email" />
+                        <label for="correo">Correo PUCP</label>
                         <div class="invalid-feedback" data-sb-feedback="password:required">Se necesita un correo.</div>
                         <div class="invalid-feedback" data-sb-feedback="password:password">Email is not valid.</div>
                       </div>
 
                       <div class="form-floating mb-3">
-                        <input class="form-control" id="especialidad" type="text" placeholder="Ingrese su especialidad..." data-sb-validations="required" />
+                        <input class="form-control"  id="especialidad" name="especialidad"  type="text" placeholder="Ingrese su especialidad..." data-sb-validations="required" />
                         <label for="especialidad">Especialidad</label>
                         <div class="invalid-feedback" data-sb-feedback="name:required">Se requiere su especialidad</div>
                       </div>
 
                       <div class="form-floating mb-3">
-                        <input class="form-control" id="password" type="password" placeholder="name@example.com" data-sb-validations="required,email" />
-                        <label for="password">Contraseña</label>
+                        <input class="form-control" id="contrasenia" name="contrasenia" type="password" placeholder="name@example.com" data-sb-validations="required,email" />
+                        <label for="contrasenia">Contraseña</label>
                         <div class="invalid-feedback" data-sb-feedback="password:required">Se necesita una contraseña.</div>
                         <div class="invalid-feedback" data-sb-feedback="password:password">Email is not valid.</div>
                       </div>
 
                       <div class="form-floating mb-3">
-                        <input class="form-control" id="password2" type="password" placeholder="Vuelva a escribir su contraseña" data-sb-validations="required,password" />
+                        <input class="form-control" id="password2" name="password2" type="password" placeholder="Vuelva a escribir su contraseña" data-sb-validations="required,password" />
                         <label for="password2">Confirmar contraseña</label>
                         <div class="invalid-feedback" data-sb-feedback="password2:required">Se necesita una contraseña.</div>
                       </div>
 
                       <div class="form-group d-flex align-items-center justify-content-center mt-4 mb-0">
+                        <!--
                         <a class="btn btn-warning mdc-ripple-upgraded" href="index.html">Registrarse</a>
+                        -->
+                        <a href="<%= request.getContextPath()%>/UsuariosServlet" class="btn btn-danger">Cancelar</a>
+                        <input type="submit" value="Guardar" class="btn btn-primary"/>
                       </div>
                     </form>
                   </div>
