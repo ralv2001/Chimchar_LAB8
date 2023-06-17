@@ -56,7 +56,7 @@ CREATE TABLE `mis_viajes` (
   `ciudad_destino` varchar(100) NOT NULL,
   `empresa_seguro_id_empresa_seguro` int NOT NULL,
   `usuarios_id_usuarios` int NOT NULL,
-  `costo_total` double NOT NULL,
+  `costo_unitario` double NOT NULL,
   `numero_de_boletos` int NOT NULL,
   PRIMARY KEY (`id_mis_viajes`),
   KEY `fk_viajes_empresa_seguro1_idx` (`empresa_seguro_id_empresa_seguro`),
@@ -112,6 +112,7 @@ CREATE TABLE `usuarios` (
   `nombre` varchar(200) NOT NULL,
   `apellido` varchar(200) NOT NULL,
   `edad` int NOT NULL,
+  `codigoPUCP` int NOT NULL,
   `correo` varchar(100) NOT NULL,
   `especialidad` varchar(100) NOT NULL,
   `contrasenia` varchar(200) NOT NULL,
@@ -128,7 +129,7 @@ CREATE TABLE `usuarios` (
 
 LOCK TABLES `usuarios` WRITE;
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
-INSERT INTO `usuarios` VALUES (1,'Ricardo','Alvarado',20,'a12345678@pucp.edu.pe','Telecomunicaciones','ralvarado',1),(2,'Aracelli','La Rosa',20,'a20206456@pucp.edu.pe','Telecomunicaciones','alarosa',1),(3,'Pablo','Flores',23,'a20203315@pucp.edu.pe','Telecomunicaciones','pflores',2),(4,'Joselin','Raimundo',18,'a20201236@pucp.edu.pe','Telecomunicaciones','jraimundo',2),(5,'Sebastian','Fuentes',26,'a20201478@pucp.edu.pe','Telecomunicaciones','sfuentes',3),(6,'Leonardo','Garcia',23,'a20178541@pucp.edu.pe','Telecomunicaciones','lgarcia',3),(7,'Maria','Mendoza',27,'a20154512@pucp.edu.pe','Telecomunicaciones','mmendoza',4),(8,'Clara','Ramirez',19,'a20212415@pucp.edu.pe','Telecomunicaciones','cramirez',4),(9,'Ronald','Perez',22,'a20197854@pucp.edu.pe','Arquitectura','rperez',3),(10,'Samuel','Linares',25,'a20181524@pucp.edu.pe','Civil','slinares',2),(11,'Pedro','Ramos',35,'a201012345@pucp.edu.pe','Derecho','pramos',1);
+INSERT INTO `usuarios` VALUES (1,'Ricardo','Alvarado',20,12345678,'a12345678@pucp.edu.pe','Telecomunicaciones','ralvarado',1),(2,'Aracelli','La Rosa',20,20206456,'a20206456@pucp.edu.pe','Telecomunicaciones','alarosa',1),(3,'Pablo','Flores',23,20203315,'a20203315@pucp.edu.pe','Telecomunicaciones','pflores',2),(4,'Joselin','Raimundo',18,20201236,'a20201236@pucp.edu.pe','Telecomunicaciones','jraimundo',2),(5,'Sebastian','Fuentes',26,20201478,'a20201478@pucp.edu.pe','Telecomunicaciones','sfuentes',3),(6,'Leonardo','Garcia',23,20178541,'a20178541@pucp.edu.pe','Telecomunicaciones','lgarcia',3),(7,'Maria','Mendoza',27,20154512,'a20154512@pucp.edu.pe','Telecomunicaciones','mmendoza',4),(8,'Clara','Ramirez',19,20212415,'a20212415@pucp.edu.pe','Telecomunicaciones','cramirez',4),(9,'Ronald','Perez',22,20197854,'a20197854@pucp.edu.pe','Arquitectura','rperez',3),(10,'Samuel','Linares',25,20181524,'a20181524@pucp.edu.pe','Civil','slinares',2),(11,'Pedro','Ramos',35,201012345,'a201012345@pucp.edu.pe','Derecho','pramos',1);
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -145,4 +146,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-06-17 13:30:23
+-- Dump completed on 2023-06-17 14:12:22
