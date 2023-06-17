@@ -3,6 +3,9 @@ package com.example.chimchar_lab8.models.daos;
 import com.example.chimchar_lab8.models.beans.Usuarios.Status;
 import com.example.chimchar_lab8.models.beans.Usuarios.Usuarios;
 
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -14,8 +17,8 @@ public class LoginDao extends BaseDao{
 
         Usuarios usuarios = null;
 
-        String sql = "SELECT * FROM usuarios u, status s\n" +
-                "WHERE u.status_idstatus = s.id_status and u.id_usuarios = ?;";
+        String sql = "SELECT u.*, s.nombre FROM usuarios u inner join status s on (u.status_idstatus = s.id_status)\n" +
+                "WHERE u.id_usuarios = ?;";
 
         try (Connection conn = this.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -32,7 +35,6 @@ public class LoginDao extends BaseDao{
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
-
         return usuarios;
     }
 
@@ -43,42 +45,58 @@ public class LoginDao extends BaseDao{
         usuario.setNombre(rs.getString(2));
         usuario.setApellido(rs.getString(3));
         usuario.setEdad(rs.getInt(4));
-
+        usuario.setCodigo(rs.getInt(5));
         usuario.setCorreo(rs.getString(6));
         usuario.setEspecialidad(rs.getString(7));
         usuario.setContrasenia(rs.getString(8));
 
         Status status = new Status();
-        status.setId_status(rs.getInt(10));
-        status.setNombre(rs.getString(11));
+        status.setId_status(rs.getInt(9));
+        status.setNombre(rs.getString(10));
         usuario.setStatus(status);
-
-        usuario.setHashcontrasenia(rs.getString(12));
     }
 
     public Usuarios validarUsuarioPassword(String username, String password){
 
         Usuarios usuario = null;
+        String hashedPassword = hashPassword(password);
 
-        String sql = "Select * from usuarios where correo = ? and hashcontrasenia = SHA2(?,256)";
+        String sql = "Select * from usuarios where correo = ? and hashcontrasenia = SHA2(?,256);";
         try (Connection conn = this.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql);) {
             pstmt.setString(1,username);
-            pstmt.setString(2,password);
+            pstmt.setString(2,hashedPassword);
 
             try (ResultSet rs = pstmt.executeQuery();){
                 if(rs.next()){
-                    int usuarioId = rs.getInt(1);
-                    usuario = this.obtenerUsuario(usuarioId);
+                    usuario = obtenerUsuario(rs.getInt(1));
                 }
             }
-
         }catch (SQLException ex){
             ex.printStackTrace();
         }
-
-
         return usuario;
+    }
+
+    private String hashPassword(String password) {
+        try {
+            MessageDigest digest = MessageDigest.getInstance("SHA-256");
+            byte[] hashBytes = digest.digest(password.getBytes(StandardCharsets.UTF_8));
+
+            // Convertir los bytes del hash a una representación hexadecimal
+            StringBuilder hexString = new StringBuilder();
+            for (byte hashByte : hashBytes) {
+                String hex = Integer.toHexString(0xff & hashByte);
+                if (hex.length() == 1) {
+                    hexString.append('0');
+                }
+                hexString.append(hex);
+            }
+            return hexString.toString();
+        } catch (NoSuchAlgorithmException ex) {
+            ex.printStackTrace();
+        }
+        return null;
     }
 
 }

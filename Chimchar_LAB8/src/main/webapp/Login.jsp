@@ -1,6 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -37,27 +37,30 @@
                                             <br>
                                         </div>
                                         <!-- Login submission form-->
-                                        <form>
+                                        <form method="POST" action="<%=request.getContextPath()%>/LoginServlet">
                                             <div class="form-floating mb-3">
-                                                <input class="form-control" id="name" type="text" placeholder="Enter your name..." data-sb-validations="required" />
-                                                <label for="name">Usuario</label>
-                                                <div class="invalid-feedback" data-sb-feedback="name:required">A name is required.</div>
+                                                <input type="text" id="inputEmail" class="form-control" name = "inputEmail" placeholder="Ingrese su correo..."  />
+                                                <label for="inputEmail">Usuario</label>
                                             </div>
                                             <!-- Email address input-->
                                             <div class="form-floating mb-3">
-                                                <input class="form-control" id="password" type="password" placeholder="name@example.com" data-sb-validations="required,email" />
-                                                <label for="password">Contraseña</label>
-                                                <div class="invalid-feedback" data-sb-feedback="password:required">Se necesita una contraseña.</div>
-                                                <div class="invalid-feedback" data-sb-feedback="password:password">Email is not valid.</div>
+                                                <input type="password" class="form-control" id="inputPassword" name ="inputPassword" placeholder="Contraseña" />
+                                                <label for="inputPassword">Contraseña</label>
                                             </div>
 
+                                            <% if (request.getParameter("error") != null) { %>
+                                            <div class = "text-danger mb-2">Error en usuario o contraseña</div>
+                                            <% } %>
+
+                                            <div class="form-group">
+                                            </div>
                                             <div class="form-group d-flex align-items-center justify-content-center mt-4 mb-0">
-                                                <a class="btn btn-primary mdc-ripple-upgraded rounded-pill" href="index.html">Ingresar</a>
+                                                <button class ="btn btn-primary mdc-ripple-upgraded rounded-pill" type="submit">Iniciar Sesión</button>
                                             </div>
                                         </form>
                                         <br>
                                         <div class="card-text text-center">
-                                            <div class="small"><a href="auth-register-basic.html" class="text-warning" >Soy nuevo y quiero registrarme</a></div>
+                                            <div class="small"><a href="<%=request.getContextPath()%>/UsuariosServlet" class="text-warning" >Soy nuevo y quiero registrarme</a></div>
                                         </div>
                                     </div>
                                 </div>
