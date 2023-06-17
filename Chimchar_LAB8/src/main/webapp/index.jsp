@@ -8,7 +8,7 @@
         <meta name="author" content="" />
         <title>Login</title>
         <!-- Favicon-->
-        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <link rel="icon" type="image/x-icon" href="recursos/assets/favicon.ico" />
         <!-- Custom Google font-->
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -27,9 +27,9 @@
                     <!-- Main content container-->
                     <div class="container">
                         <div class="row justify-content-center">
-                            <div class="col-xxl-4 col-xl-5 col-lg-6 col-md-8">
-                                <div class="card card-raised shadow-10 mt-5 mt-xl-10 mb-4">
-                                    <div class="card-body p-5">
+                            <div class="col-xl-4 col-xl-5 col-lg-6 col-md-8">
+                                <div class="card card-raised shadow-10 mt-5 mt-xl-10 mb-4" style="background-color: rgb(11,13,16);">
+                                    <div class="card-body p-5" style="background-color: rgb(11,13,16);">
                                         <!-- Auth header with logo image-->
                                         <div class="text-center">
                                             <img class="mb-3" src="recursos/assets/logo2.webp" alt="..." style="height: 200px">
@@ -52,12 +52,12 @@
                                             </div>
 
                                             <div class="form-group d-flex align-items-center justify-content-center mt-4 mb-0">
-                                                <a class="btn btn-primary mdc-ripple-upgraded" href="index.html">Ingresar</a>
+                                                <a class="btn btn-primary mdc-ripple-upgraded rounded-pill" href="index.html">Ingresar</a>
                                             </div>
                                         </form>
                                         <br>
                                         <div class="card-text text-center">
-                                            <div class="small"><a href="auth-register-basic.html">Soy nuevo y quiero registrarme</a></div>
+                                            <div class="small"><a href="auth-register-basic.html" class="text-warning" >Soy nuevo y quiero registrarme</a></div>
                                         </div>
                                     </div>
                                 </div>
