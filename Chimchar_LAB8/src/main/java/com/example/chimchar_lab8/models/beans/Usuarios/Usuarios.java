@@ -6,10 +6,12 @@ public class Usuarios {
     private String nombre;
     private String apellido;
     private int edad;
+    private int codigo;
     private String correo;
     private String especialidad;
     private String contrasenia;
     private Status status;
+    private String hashcontrasenia;
 
     public int getId_usuarios() {
         return id_usuarios;
@@ -75,7 +77,19 @@ public class Usuarios {
         this.status = status;
     }
 
+    public int getCodigo() {
+        return codigo;
+    }
 
+    public void setCodigo(int codigo) {
+        this.codigo = codigo;
+    }
 
+    public String getHashcontrasenia() {
+        return hashcontrasenia;
+    }
 
+    public void setHashcontrasenia(String hashcontrasenia) {
+        this.hashcontrasenia = hashcontrasenia;
+    }
 }
