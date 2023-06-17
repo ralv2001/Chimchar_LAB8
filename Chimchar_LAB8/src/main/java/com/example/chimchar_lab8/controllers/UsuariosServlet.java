@@ -26,6 +26,9 @@ public class UsuariosServlet extends HttpServlet {
         }
          */
 
+
+        request.getRequestDispatcher("crearUsuario.jsp").forward(request,response);
+
     }
 
     @Override

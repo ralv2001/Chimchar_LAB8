@@ -10,7 +10,22 @@ import java.io.IOException;
 public class ViajesServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String action = request.getParameter("a") == null ? "normal" : request.getParameter("a");
 
+        switch (action){
+            case "normal":
+                request.getRequestDispatcher("usuarioNormal.jsp").forward(request,response);
+                break;
+            case "silver":
+                request.getRequestDispatcher("usuarioSilver.jsp").forward(request,response);
+                break;
+            case "gold":
+                request.getRequestDispatcher("usuarioGold.jsp").forward(request,response);
+                break;
+            case "platinum":
+                request.getRequestDispatcher("usuarioPlatinum.jsp").forward(request,response);
+                break;
+        }
     }
 
     @Override
