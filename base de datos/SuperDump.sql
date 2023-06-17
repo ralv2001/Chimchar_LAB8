@@ -1,10 +1,10 @@
-CREATE DATABASE  IF NOT EXISTS `lab8` /*!40100 DEFAULT CHARACTER SET utf8 */ /*!80016 DEFAULT ENCRYPTION='N' */;
+CREATE DATABASE  IF NOT EXISTS `lab8` /*!40100 DEFAULT CHARACTER SET utf8mb3 */ /*!80016 DEFAULT ENCRYPTION='N' */;
 USE `lab8`;
--- MySQL dump 10.13  Distrib 8.0.28, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.33, for Win64 (x86_64)
 --
--- Host: localhost    Database: lab8
+-- Host: 127.0.0.1    Database: lab8
 -- ------------------------------------------------------
--- Server version	8.0.28
+-- Server version	8.0.33
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -72,6 +72,7 @@ CREATE TABLE `mis_viajes` (
 
 LOCK TABLES `mis_viajes` WRITE;
 /*!40000 ALTER TABLE `mis_viajes` DISABLE KEYS */;
+INSERT INTO `mis_viajes` VALUES (10012323,'2025-10-30','2026-02-28','Lima','Medellín',4,8,350,2),(10054523,'2024-11-18','2025-02-28','Lima','Medellín',4,8,350,1),(10231223,'2026-11-12','2027-03-10','Lima','Medellín',4,8,350,1),(11223444,'2024-12-25','2025-04-15','Lima','Río de Janeiro',5,10,380,3),(11227544,'2025-12-05','2026-04-20','Lima','Río de Janeiro',5,2,380,1),(11263344,'2024-02-14','2024-05-30','Lima','Río de Janeiro',5,8,380,1),(12343344,'2026-12-20','2027-04-30','Lima','Río de Janeiro',5,10,380,3),(12345678,'2023-05-14','2023-08-15','Lima','Buenos Aires',1,1,150,2),(22332355,'2026-01-10','2026-05-15','Arequipa','Cusco',1,9,170,2),(22334755,'2024-03-22','2024-06-20','Arequipa','Cusco',1,11,170,4),(22337555,'2025-01-30','2025-05-20','Arequipa','Cusco',1,4,170,2),(22534455,'2027-01-25','2027-05-20','Arequipa','Cusco',1,4,170,2),(23456789,'2023-06-20','2023-09-10','Cusco','Machu Picchu',2,3,200,1),(33235566,'2027-03-02','2027-07-10','Lima','Buenos Aires',2,9,300,2),(33442366,'2026-02-20','2026-06-10','Lima','Buenos Aires',2,6,300,3),(33442666,'2025-02-15','2025-06-05','Lima','Buenos Aires',2,9,300,2),(33445556,'2024-04-28','2024-08-10','Lima','Buenos Aires',2,3,300,2),(34557890,'2023-07-05','2023-08-30','Lima','Santiago',3,5,300,4),(44552377,'2025-03-22','2025-07-10','Lima','Santiago',3,5,250,3),(44555677,'2026-03-30','2026-07-20','Lima','Santiago',3,5,250,3),(44556657,'2024-05-30','2024-09-05','Lima','Santiago',3,9,250,3),(44646677,'2027-04-10','2027-08-15','Lima','Santiago',3,5,250,3),(45628901,'2023-08-02','2023-10-15','Cusco','Lima',4,2,180,3),(55623488,'2025-04-30','2025-08-15','Cusco','Arequipa',4,3,200,1),(55667488,'2024-06-15','2024-08-30','Cusco','Machu Picchu',4,5,200,1),(55675788,'2026-05-07','2026-09-05','Piura','Bogota',4,3,200,1),(55757788,'2027-05-15','2027-09-30','Lima','Paris',4,3,500,1),(56389012,'2023-09-10','2023-11-20','Arequipa','Lima',5,7,250,2),(66723499,'2025-06-05','2025-09-30','Lima','Arequipa',5,7,180,2),(66772399,'2026-06-15','2026-10-15','Lima','Arequipa',5,7,180,2),(66773599,'2024-07-20','2024-10-15','Lima','Arequipa',5,1,180,2),(67390123,'2023-10-18','2024-01-05','Lima','Sao Paulo',1,9,350,1),(77883200,'2024-08-28','2024-12-10','Lima','Sao Paulo',1,7,320,1),(77883500,'2026-07-20','2026-11-20','Lima','Sao Paulo',1,11,320,4),(77886500,'2025-07-12','2025-11-10','Lima','Sao Paulo',1,6,320,4),(78101234,'2023-11-25','2024-03-10','Lima','Bogotá',2,6,280,3),(82012345,'2023-12-30','2024-02-28','Cusco','Lima',3,10,200,2),(88992241,'2026-08-30','2026-12-30','Lima','Bogotá',2,6,280,1),(88992311,'2025-08-20','2026-01-05','Lima','Bogotá',2,11,280,1),(88992411,'2024-09-05','2025-01-20','Lima','Bogotá',2,6,280,4),(96123456,'2024-01-06','2024-04-15','Lima','Medellín',4,4,320,2),(99002322,'2024-10-12','2025-03-05','Cusco','Lima',3,2,200,2),(99005322,'2025-09-28','2026-03-15','Cusco','Lima',3,4,200,3),(99461122,'2026-10-05','2027-01-15','Cusco','Lima',3,2,200,2);
 /*!40000 ALTER TABLE `mis_viajes` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -118,7 +119,7 @@ CREATE TABLE `usuarios` (
   PRIMARY KEY (`id_usuarios`),
   KEY `fk_usuarios_status1_idx` (`status_idstatus`),
   CONSTRAINT `fk_usuarios_status1` FOREIGN KEY (`status_idstatus`) REFERENCES `status` (`id_status`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -127,8 +128,13 @@ CREATE TABLE `usuarios` (
 
 LOCK TABLES `usuarios` WRITE;
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
+INSERT INTO `usuarios` VALUES (1,'Ricardo','Alvarado',20,'a12345678@pucp.edu.pe','Telecomunicaciones','ralvarado',1),(2,'Aracelli','La Rosa',20,'a20206456@pucp.edu.pe','Telecomunicaciones','alarosa',1),(3,'Pablo','Flores',23,'a20203315@pucp.edu.pe','Telecomunicaciones','pflores',2),(4,'Joselin','Raimundo',18,'a20201236@pucp.edu.pe','Telecomunicaciones','jraimundo',2),(5,'Sebastian','Fuentes',26,'a20201478@pucp.edu.pe','Telecomunicaciones','sfuentes',3),(6,'Leonardo','Garcia',23,'a20178541@pucp.edu.pe','Telecomunicaciones','lgarcia',3),(7,'Maria','Mendoza',27,'a20154512@pucp.edu.pe','Telecomunicaciones','mmendoza',4),(8,'Clara','Ramirez',19,'a20212415@pucp.edu.pe','Telecomunicaciones','cramirez',4),(9,'Ronald','Perez',22,'a20197854@pucp.edu.pe','Arquitectura','rperez',3),(10,'Samuel','Linares',25,'a20181524@pucp.edu.pe','Civil','slinares',2),(11,'Pedro','Ramos',35,'a201012345@pucp.edu.pe','Derecho','pramos',1);
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Dumping routines for database 'lab8'
+--
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -139,4 +145,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-06-17  2:32:59
+-- Dump completed on 2023-06-17 13:30:23
