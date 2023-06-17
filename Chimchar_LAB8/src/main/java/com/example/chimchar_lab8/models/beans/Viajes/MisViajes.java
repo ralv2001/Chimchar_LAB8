@@ -12,6 +12,8 @@ public class MisViajes {
     private EmpresaSeguro empresaSeguro;
     private Usuarios usuarios;
     private double costo_total;
+    private int numero_de_boletos;
+
 
     public int getId_mis_viajes() {
         return id_mis_viajes;
@@ -76,6 +78,16 @@ public class MisViajes {
     public void setCosto_total(double costo_total) {
         this.costo_total = costo_total;
     }
+
+    public int getNumero_de_boletos() {
+        return numero_de_boletos;
+    }
+
+    public void setNumero_de_boletos(int numero_de_boletos) {
+        this.numero_de_boletos = numero_de_boletos;
+    }
+
+
 
 
 }

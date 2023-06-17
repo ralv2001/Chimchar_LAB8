@@ -2,16 +2,16 @@ package com.example.chimchar_lab8.models.daos.Viajes;
 
 import com.example.chimchar_lab8.models.beans.Usuarios.Usuarios;
 import com.example.chimchar_lab8.models.beans.Viajes.EmpresaSeguro;
+import com.example.chimchar_lab8.models.beans.Viajes.MisViajes;
 import com.example.chimchar_lab8.models.daos.BaseDao;
+import com.sun.jdi.VMMismatchException;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
+import java.util.ArrayList;
 
 public class ViajesDao extends BaseDao {
 
-
-    public void editarViajes(String jobId, String jobTitle, int minSalary, int maxSalary) {
+    public void editarViajes(String fecha_reserva, String fecha_viaje, String ciudad_origen, String ciudad_destino, int id_empresa_seguro, int costo_total, int numero_de_boletos) {
 
         try (Connection conn = this.getConnection()) {
             String sql = "UPDATE jobs SET job_title = ?, min_salary = ?, max_salary = ? "
@@ -29,8 +29,7 @@ public class ViajesDao extends BaseDao {
 
     }
 
-
-    public void crearViajes(int id_mis_viajes, String fecha_reserva, String fecha_viaje, String ciudad_origen, String ciudad_destino, int id_empresa_seguro, int id_usuarios, double costo_total){
+    public void crearViajes(int id_mis_viajes, String fecha_reserva, String fecha_viaje, String ciudad_origen, String ciudad_destino, int id_empresa_seguro, int id_usuarios, double costo_total, int numero_de_boletos){
 
         try(Connection conn = this.getConnection()){
             String sql = "INSERT INTO `lab8`.`mis_viajes` (id_mis_viajes,fecha_reserva,fecha_viaje,ciudad_origen,ciudad_destino,empresa_seguro_id_empresa_seguro,usuarios_id_usuarios,costo_total) VALUES\n" +
