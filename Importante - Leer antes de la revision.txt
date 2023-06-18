@@ -1,0 +1,23 @@
+LAB 8
+Algunas indicaciones:
+
+- La ruta principal es: http://localhost:8080/Chimchar_LAB8_war_exploded/LoginServlet
+
+- Los usuarios registrados son 11, para que pueda observar cómo varía
+  la vista segun su status, aquí algunos:
+  
+	-> Normal:
+		usuario: a20206456@pucp.edu.pe
+		contraseña: aracellilarosa
+
+	-> Silver:
+		usuario: a20203315@pucp.edu.pe
+		contraseña: pabloflores
+
+	-> Gold:
+		usuario: a20201478@pucp.edu.pe
+		contraseña: sebastianfuentes
+
+	-> Platinum:
+		usuario: a20154512@pucp.edu.pe
+		contraseña: mariamendoza

@@ -15,10 +15,8 @@ import java.sql.SQLException;
 public class UsuariosDao extends BaseDao {
 
     public Usuarios obtenerUsuario(int id_usuarios) {
-
         Usuarios usuarios = null;
-
-        String sql = "select * from usuarios where id_usuarios = ?";
+        String sql = "SELECT * FROM usuarios WHERE id_usuarios = ?";
 
         try (Connection conn = this.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -36,37 +34,28 @@ public class UsuariosDao extends BaseDao {
         return usuarios;
     }
 
-
-
-    public void crearUsuario(Usuarios usuarios, Status status){
-
-        String sql = "INSERT INTO usuario (correo,nombre,apellido,contrasenha, contrasenha_hashed, status, edad, codigo, especialidad) \n" +
-                "VALUES (?,?,?,?,?,?,?,?,?)";
+    public void crearUsuario(Usuarios usuarios, Status status) {
+        String sql = "INSERT INTO usuario (correo, nombre, apellido, contrasenha, contrasenha_hashed, status, edad, codigo, especialidad) " +
+                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         try (Connection connection = getConnection();
              PreparedStatement pstmt = connection.prepareStatement(sql)) {
 
-            pstmt.setString(1,usuarios.getCorreo());
-            pstmt.setString(2,usuarios.getNombre());
-            pstmt.setString(3,usuarios.getApellido());
-            pstmt.setString(4,usuarios.getContrasenia());
-
-
-            pstmt.setString(5,hashearContrasenia(usuarios.getContrasenia()));
-
-            //CASO ESPECIAL PARA STATUS
-            pstmt.setInt(6,status.getId_status());
-
-            pstmt.setInt(7,usuarios.getEdad());
-            pstmt.setInt(8,usuarios.getCodigo());
-            pstmt.setString(9,usuarios.getEspecialidad());
+            pstmt.setString(1, usuarios.getCorreo());
+            pstmt.setString(2, usuarios.getNombre());
+            pstmt.setString(3, usuarios.getApellido());
+            pstmt.setString(4, usuarios.getContrasenia());
+            pstmt.setString(5, hashearContrasenia(usuarios.getContrasenia()));
+            pstmt.setInt(6, status.getId_status());
+            pstmt.setInt(7, usuarios.getEdad());
+            pstmt.setInt(8, usuarios.getCodigo());
+            pstmt.setString(9, usuarios.getEspecialidad());
 
             pstmt.executeUpdate();
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-
     }
 
     public static String hashearContrasenia(String contrasenia) {
@@ -91,13 +80,12 @@ public class UsuariosDao extends BaseDao {
         }
     }
 
-
     private void fetchUsuarioData(Usuarios usuarios, ResultSet rs) throws SQLException {
-        usuarios.setId_usuarios(rs.getInt("idUsuario"));
+        usuarios.setId_usuarios(rs.getInt("id_usuarios"));
         usuarios.setCorreo(rs.getString("correo"));
         usuarios.setNombre(rs.getString("nombre"));
         usuarios.setApellido(rs.getString("apellido"));
-        usuarios.setContrasenia(rs.getString("contrasenia_hasheada"));
+        usuarios.setContrasenia(rs.getString("contrasenha_hasheada"));
 
         //CASO ESPECIAL:
         Status status = new Status();
@@ -106,16 +94,14 @@ public class UsuariosDao extends BaseDao {
         usuarios.setEdad(rs.getInt("edad"));
         usuarios.setCodigo(rs.getInt("codigo"));
         usuarios.setEspecialidad(rs.getString("especialidad"));
-
     }
 
-
     public Usuarios validarUsuarioyContrasenia(String username, String password) {
-
         Usuarios usuario = null;
 
-        String sql = "select * from usuario\n" +
-                "where correo = ? and contrasenha_hashed = SHA2(?,256) and  especialidad = 'Ingenieria de las Telecomunicaciones';";
+        String sql = "SELECT * FROM usuario " +
+                "WHERE correo = ? AND contrasenha_hashed = SHA2(?,256) AND especialidad = 'Ingenieria de las Telecomunicaciones'";
+
         try (Connection connection = getConnection();
              PreparedStatement pstmt = connection.prepareStatement(sql)) {
             pstmt.setString(1, username);
