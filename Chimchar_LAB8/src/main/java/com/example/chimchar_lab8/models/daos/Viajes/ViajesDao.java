@@ -143,6 +143,120 @@ public class ViajesDao extends BaseDao {
         return viajesUsuarioNormal;
     }
 
+    public ArrayList<MisViajes> listarViajesUsuarioSilver(int id_usuario){
+        ArrayList<MisViajes> viajesUsuarioSilver = new ArrayList<>();
+        String sql="SELECT v.* , aseguradora.* FROM usuarios u, mis_viajes v, empresa_seguro aseguradora\n" +
+                "WHERE u.id_usuarios = v.usuarios_id_usuarios and v.empresa_seguro_id_empresa_seguro = aseguradora.id_empresa_seguro \n" +
+                "and u.status_idstatus = 2 and u.id_usuarios = ?;";
 
+        try(Connection connection=this.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
 
+            preparedStatement.setInt(1, id_usuario);
+
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+
+                while (resultSet.next()) {
+                    MisViajes viajes = new MisViajes();
+                    viajes.setId_mis_viajes(resultSet.getInt(1));
+                    viajes.setFecha_reserva(resultSet.getDate(2));
+                    viajes.setFecha_viaje(resultSet.getDate(3));
+                    viajes.setCiudad_origen(resultSet.getString(4));
+                    viajes.setCiudad_destino(resultSet.getString(5));
+
+                    EmpresaSeguro empresaSeguro = new EmpresaSeguro();
+                    empresaSeguro.setId_empresa_seguro(resultSet.getInt(6));
+                    empresaSeguro.setNombre(resultSet.getString(11));
+
+                    viajes.setCosto_unitario(resultSet.getDouble(8));
+                    viajes.setNumero_de_boletos(resultSet.getInt(9));
+                    viajes.setEmpresaSeguro(empresaSeguro);
+
+                    viajesUsuarioSilver.add(viajes);
+                }
+            }
+        }
+        catch (SQLException e){
+            e.printStackTrace();
+        }
+        return viajesUsuarioSilver;
+    }
+
+    public ArrayList<MisViajes> listarViajesUsuarioGold(int id_usuario){
+        ArrayList<MisViajes> viajesUsuarioGold = new ArrayList<>();
+        String sql="SELECT v.* , aseguradora.* FROM usuarios u, mis_viajes v, empresa_seguro aseguradora\n" +
+                "WHERE u.id_usuarios = v.usuarios_id_usuarios and v.empresa_seguro_id_empresa_seguro = aseguradora.id_empresa_seguro \n" +
+                "and u.status_idstatus = 3 and u.id_usuarios = ?;";
+
+        try(Connection connection=this.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+
+            preparedStatement.setInt(1, id_usuario);
+
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+
+                while (resultSet.next()) {
+                    MisViajes viajes = new MisViajes();
+                    viajes.setId_mis_viajes(resultSet.getInt(1));
+                    viajes.setFecha_reserva(resultSet.getDate(2));
+                    viajes.setFecha_viaje(resultSet.getDate(3));
+                    viajes.setCiudad_origen(resultSet.getString(4));
+                    viajes.setCiudad_destino(resultSet.getString(5));
+
+                    EmpresaSeguro empresaSeguro = new EmpresaSeguro();
+                    empresaSeguro.setId_empresa_seguro(resultSet.getInt(6));
+                    empresaSeguro.setNombre(resultSet.getString(11));
+
+                    viajes.setCosto_unitario(resultSet.getDouble(8));
+                    viajes.setNumero_de_boletos(resultSet.getInt(9));
+                    viajes.setEmpresaSeguro(empresaSeguro);
+
+                    viajesUsuarioGold.add(viajes);
+                }
+            }
+        }
+        catch (SQLException e){
+            e.printStackTrace();
+        }
+        return viajesUsuarioGold;
+    }
+
+    public ArrayList<MisViajes> listarViajesUsuarioPlatinum(int id_usuario){
+        ArrayList<MisViajes> viajesUsuarioPlatinum = new ArrayList<>();
+        String sql="SELECT v.* , aseguradora.* FROM usuarios u, mis_viajes v, empresa_seguro aseguradora\n" +
+                "WHERE u.id_usuarios = v.usuarios_id_usuarios and v.empresa_seguro_id_empresa_seguro = aseguradora.id_empresa_seguro \n" +
+                "and u.status_idstatus = 4 and u.id_usuarios = ?;";
+
+        try(Connection connection=this.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+
+            preparedStatement.setInt(1, id_usuario);
+
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+
+                while (resultSet.next()) {
+                    MisViajes viajes = new MisViajes();
+                    viajes.setId_mis_viajes(resultSet.getInt(1));
+                    viajes.setFecha_reserva(resultSet.getDate(2));
+                    viajes.setFecha_viaje(resultSet.getDate(3));
+                    viajes.setCiudad_origen(resultSet.getString(4));
+                    viajes.setCiudad_destino(resultSet.getString(5));
+
+                    EmpresaSeguro empresaSeguro = new EmpresaSeguro();
+                    empresaSeguro.setId_empresa_seguro(resultSet.getInt(6));
+                    empresaSeguro.setNombre(resultSet.getString(11));
+
+                    viajes.setCosto_unitario(resultSet.getDouble(8));
+                    viajes.setNumero_de_boletos(resultSet.getInt(9));
+                    viajes.setEmpresaSeguro(empresaSeguro);
+
+                    viajesUsuarioPlatinum.add(viajes);
+                }
+            }
+        }
+        catch (SQLException e){
+            e.printStackTrace();
+        }
+        return viajesUsuarioPlatinum;
+    }
 }

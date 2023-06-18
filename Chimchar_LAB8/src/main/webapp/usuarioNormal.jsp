@@ -36,7 +36,7 @@
                     <div class="badge bg-gradient-primary-to-secondary text-white mb-4"><div class="text-uppercase">Normal </div></div>
                     <span style="margin-right: 10px;"></span>
                     <span style="margin-right: 10px;"></span>
-                    <a class="navbar-brand" href="index.html"><span class="fw-bolder text-white">Bienvenido <%=personaSession.getNombre() + " " + personaSession.getApellido()%> </span></a>
+                    <a class="navbar-brand" href="<%=request.getContextPath()%>/ViajesServlet?a=normal"><span class="fw-bolder text-white">Bienvenido <%=personaSession.getNombre() + " " + personaSession.getApellido()%> </span></a>
                     <br>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -59,7 +59,7 @@
                     <div class="text-lg-end">
 
                         <h7 class="section-subheading text-dark">¿Planea viajar a un nuevo destino? <br>¡Registre su viaje!<br></h7>
-                        <a class="btn btn-success" href="<%=request.getContextPath()%>/ViajesServlet?a=normal">Añadir viaje </a>
+                        <a class="btn btn-success" href="<%=request.getContextPath()%>/ViajesServlet?a=crear">Añadir viaje </a>
                         <br>
                         <br>
                         <div class="input-group input-group-joined input-group-solid">
@@ -83,6 +83,7 @@
                                             <th class="text-center">Ciudad de destino</th>
                                             <th class="text-center">Empresa de seguro</th>
                                             <th class="text-center">Numero de boletos</th>
+                                            <th class="text-center">Precio unitario</th>
                                             <th class="text-center">Costo total</th>
                                             <th class="text-center"> </th>
                                         </tr>
@@ -103,6 +104,7 @@
                                             <td class="text-center"><%=listaViajes.getEmpresaSeguro().getNombre()%></td>
                                             <td class="text-center"><%=listaViajes.getNumero_de_boletos()%></td>
                                             <td class="text-center"><%=listaViajes.getCosto_unitario()%></td>
+                                            <td class="text-center"><%=listaViajes.getCosto_unitario() * listaViajes.getNumero_de_boletos()%></td>
                                             <td class="text-center">
                                                 <a href="<%=request.getContextPath()%>/ViajesServlet?a=editar" type="button" class="btn btn-light">
                                                     <i class="bi bi-pencil-square"></i>
