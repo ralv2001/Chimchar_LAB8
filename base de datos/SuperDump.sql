@@ -115,7 +115,7 @@ CREATE TABLE `usuarios` (
   `codigoPUCP` int NOT NULL,
   `correo` varchar(100) NOT NULL,
   `especialidad` varchar(100) NOT NULL,
-  `contrasenia` varchar(200) NOT NULL,
+  `contrasenia` varchar(500) NOT NULL,
   `status_idstatus` int NOT NULL,
   PRIMARY KEY (`id_usuarios`),
   KEY `fk_usuarios_status1_idx` (`status_idstatus`),
@@ -129,7 +129,7 @@ CREATE TABLE `usuarios` (
 
 LOCK TABLES `usuarios` WRITE;
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
-INSERT INTO `usuarios` VALUES (1,'Ricardo','Alvarado',20,12345678,'a12345678@pucp.edu.pe','Telecomunicaciones','ralvarado',1),(2,'Aracelli','La Rosa',20,20206456,'a20206456@pucp.edu.pe','Telecomunicaciones','alarosa',1),(3,'Pablo','Flores',23,20203315,'a20203315@pucp.edu.pe','Telecomunicaciones','pflores',2),(4,'Joselin','Raimundo',18,20201236,'a20201236@pucp.edu.pe','Telecomunicaciones','jraimundo',2),(5,'Sebastian','Fuentes',26,20201478,'a20201478@pucp.edu.pe','Telecomunicaciones','sfuentes',3),(6,'Leonardo','Garcia',23,20178541,'a20178541@pucp.edu.pe','Telecomunicaciones','lgarcia',3),(7,'Maria','Mendoza',27,20154512,'a20154512@pucp.edu.pe','Telecomunicaciones','mmendoza',4),(8,'Clara','Ramirez',19,20212415,'a20212415@pucp.edu.pe','Telecomunicaciones','cramirez',4),(9,'Ronald','Perez',22,20197854,'a20197854@pucp.edu.pe','Arquitectura','rperez',3),(10,'Samuel','Linares',25,20181524,'a20181524@pucp.edu.pe','Civil','slinares',2),(11,'Pedro','Ramos',35,201012345,'a201012345@pucp.edu.pe','Derecho','pramos',1);
+INSERT INTO `usuarios` VALUES (1,'Ricardo','Alvarado',20,12345678,'a12345678@pucp.edu.pe','Telecomunicaciones','43031BE8176C7FBBA63C41237307D0694F64272F5AD9D538BB08F126DE5175EA',1),(2,'Aracelli','La Rosa',20,20206456,'a20206456@pucp.edu.pe','Telecomunicaciones','3a1471875f1541253b02b663fabba657b6acf53dde81b496e15cf8c09ab51406',1),(3,'Pablo','Flores',23,20203315,'a20203315@pucp.edu.pe','Telecomunicaciones','1DF051EC1C65298CBE7921943DFD0449041D6A33D50FA348BD7F1C20C7F020FD',2),(4,'Joselin','Raimundo',18,20201236,'a20201236@pucp.edu.pe','Telecomunicaciones','4ADD61867CB214BEE3AF4F488DCBE83853934FAE4BD4A99A9484AA0BB7B28C49',2),(5,'Sebastian','Fuentes',26,20201478,'a20201478@pucp.edu.pe','Telecomunicaciones','9B0A442DA4A80C7743CAC89C833AB2FC35F7D9B2F7EB42CB39555BE0CA1A0784',3),(6,'Leonardo','Garcia',23,20178541,'a20178541@pucp.edu.pe','Telecomunicaciones','25DB6F4BF8C51DF1ED1982EE3B20F085B4DFA32E4F27B8DD072C7EC8DBF4B560',3),(7,'Maria','Mendoza',27,20154512,'a20154512@pucp.edu.pe','Telecomunicaciones','22F3DFA932265C82428CB9CCCD654551B4E5FCE21CCC6D9B95222A39A4AE2745',4),(8,'Clara','Ramirez',19,20212415,'a20212415@pucp.edu.pe','Telecomunicaciones','26235E4E18994FEE692E3DABF9DCA1631F1F5737D1EF2EEE9BB97A5B69ECD8B8',4),(9,'Ronald','Perez',22,20197854,'a20197854@pucp.edu.pe','Arquitectura','C01DF023B04948E0382B463FD9872A06801048A811E1A609FB2E31BA1499267B',3),(10,'Samuel','Linares',25,20181524,'a20181524@pucp.edu.pe','Civil','203A29B74E12E2A999595493CE381DEE4B67EFF073AD3587357BACE62E602E0F',2),(11,'Pedro','Ramos',35,201012345,'a201012345@pucp.edu.pe','Derecho','EAD72E6FFD38176499F5990697B4EC61B9A9ED7787B16513902268EEBCA464DC',1);
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -146,4 +146,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-06-17 14:12:22
+-- Dump completed on 2023-06-17 20:12:29
