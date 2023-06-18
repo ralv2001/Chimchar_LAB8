@@ -61,17 +61,29 @@ public class LoginDao extends BaseDao{
         Usuarios usuario = null;
         String hashedPassword = hashPassword(password);
 
-        String sql = "Select * from usuarios where correo = ? and hashcontrasenia = SHA2(?,256);";
+        String sql = "Select * from usuarios where correo = ? and contrasenia = ?;";
         try (Connection conn = this.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql);) {
             pstmt.setString(1,username);
             pstmt.setString(2,hashedPassword);
 
-            try (ResultSet rs = pstmt.executeQuery();){
-                if(rs.next()){
-                    usuario = obtenerUsuario(rs.getInt(1));
+            try (ResultSet rs = pstmt.executeQuery()) {
+                if (rs.next()) {
+                    usuario = new Usuarios();
+                    usuario.setId_usuarios(rs.getInt(1));
+                    usuario.setNombre(rs.getString(2));
+                    usuario.setApellido(rs.getString(3));
+                    usuario.setEdad(rs.getInt(4));
+                    usuario.setCodigo(rs.getInt(5));
+                    usuario.setCorreo(rs.getString(6));
+                    usuario.setEspecialidad(rs.getString(7));
+                    usuario.setContrasenia(rs.getString(8));
+                    Status status = new Status();
+                    status.setId_status(rs.getInt(9));
+                    usuario.setStatus(status);
                 }
             }
+
         }catch (SQLException ex){
             ex.printStackTrace();
         }
