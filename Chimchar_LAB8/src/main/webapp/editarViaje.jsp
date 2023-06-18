@@ -55,7 +55,7 @@
                       <div class="text">
                         <h7 class="section-subheading text-success" style="text-align: left;">* Formato: AA-MM-DD</h7>
                       </div>
-                      <form method="POST" action="<%=request.getContextPath()%>/ViajesServlet?p=a">
+                      <form method="POST" action="<%=request.getContextPath()%>/ViajesServlet?p=aNormal">
                         <div class="row">
                           <div class="col-md-4">
                             <div class="form-floating mb-3">

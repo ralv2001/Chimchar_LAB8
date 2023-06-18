@@ -52,7 +52,6 @@ public class ViajesServlet extends HttpServlet {
 
             case "aNormal": //actualizar
 
-
                 response.sendRedirect(request.getContextPath() + "/ViajesServlet?a=normal");
                 break;
             case "aSilver": //actualizar
