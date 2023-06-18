@@ -105,8 +105,15 @@
                             </div>
                           </div>
                         </div>
-                        <div class="row justify-content-end">
-                          <div class="col-md-4 ml-auto"> <!-- Agregada la clase ml-auto -->
+                        <div class="row">
+                          <div class="col-md-4"> <!-- Agregada la clase col-md-4 -->
+                            <div class="form-floating mb-3">
+                              <input class="form-control" id="preciounitario" type="text" placeholder="Precio unitario..." data-sb-validations="required" />
+                              <label for="preciounitario">Precio</label>
+                              <div class="invalid-feedback" data-sb-feedback="preciounitario:required">Ingrese una precio de viaje</div>
+                            </div>
+                          </div>
+                          <div class="col-md-8"> <!-- Agregada la clase col-md-8 -->
                             <h7 class="section-subheading text-danger">Su viaje costaría:</h7>
                             <div class="form-floating mb-3" style="text-align: right;">
                               <input class="form-control" id="precio" type="text" placeholder="Ingrese el precio..." data-sb-validations="required" />
@@ -115,7 +122,7 @@
                           </div>
                         </div>
                         <div class="form-group d-flex align-items-center justify-content-center mt-4 mb-0">
-                          <a button class="btn btn-success text-white" type="button" href="index.html"><b>Guardar viaje</b></a>
+                          <a button class="btn btn-success text-white" type="button" href="index.html"><b>Guardar cambios</b></a>
                         </div>
                       </form>
                       <br>
