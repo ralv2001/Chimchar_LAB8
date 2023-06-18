@@ -21,6 +21,7 @@ public class LoginServlet extends HttpServlet {
         String action = request.getParameter("action") == null ?
                 "loginform" : request.getParameter("action");
 
+        LoginDao loginDao = new LoginDao();
         HttpSession session = request.getSession();
 
         RequestDispatcher view;
