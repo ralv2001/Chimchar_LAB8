@@ -53,7 +53,7 @@ public class CrearUsuarioServlet extends HttpServlet {
         String correo = request.getParameter("correo");
         String especialidad = request.getParameter("especialidad");
         String contrasenha = request.getParameter("contrasenha");
-        String contrasenhaRepetida = request.getParameter("contrasenha_repetida");
+        String contrasenia_repetida = request.getParameter("password2");
 
         try {
             int edad = Integer.parseInt(edadStr);
@@ -71,7 +71,7 @@ public class CrearUsuarioServlet extends HttpServlet {
             Status status = new Status();
             status.setId_status(1);
 
-            if (!contrasenhaRepetida.equals(contrasenha)) {
+            if (!contrasenia_repetida.equals(contrasenha)) {
                 return null;
             }
 
