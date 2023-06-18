@@ -106,7 +106,7 @@
                                             <td class="text-center"><%=listaViajes.getCosto_unitario()%></td>
                                             <td class="text-center"><%=listaViajes.getCosto_unitario() * listaViajes.getNumero_de_boletos()%></td>
                                             <td class="text-center">
-                                                <a href="<%=request.getContextPath()%>/ViajesServlet?a=editar" type="button" class="btn btn-light">
+                                                <a href="<%=request.getContextPath()%>/ViajesServlet?a=editar&id_viaje=<%=listaViajes.getId_mis_viajes()%>" type="button" class="btn btn-light">
                                                     <i class="bi bi-pencil-square"></i>
                                                 </a>
                                             </td>

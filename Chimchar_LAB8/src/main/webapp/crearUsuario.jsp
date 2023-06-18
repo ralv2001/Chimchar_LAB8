@@ -44,7 +44,7 @@
                       <br>
                     </div>
                     <!-- Login submission form-->
-                    <form method="POST" action="UsuariosServlet?action=crearUsuarios">
+                    <form class="form-signin" method="POST" action="<%=request.getContextPath()%>/CrearUsuarioServlet">
                       <div class="form-floating mb-3">
                         <input class="form-control" id="nombre" name="nombre" type="text" placeholder="Ingrese su nombre..." data-sb-validations="required" />
                         <label for="nombre">Nombre</label>
@@ -117,4 +117,5 @@
     <script src="recursos/js/scripts.js"></script>
   </body>
 </html>
+
 

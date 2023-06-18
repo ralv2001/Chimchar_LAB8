@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<jsp:useBean id="misViajes" scope="request" type="com.example.chimchar_lab8.models.beans.Viajes.MisViajes"/>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -54,20 +55,19 @@
                       <div class="text">
                         <h7 class="section-subheading text-success" style="text-align: left;">* Formato: AA-MM-DD</h7>
                       </div>
-                      <form>
+                      <form method="POST" action="<%=request.getContextPath()%>/ViajesServlet?p=a">
                         <div class="row">
                           <div class="col-md-4">
                             <div class="form-floating mb-3">
-                              <input class="form-control" id="fechaReserva" type="text" placeholder="Fecha de reserva ..." data-sb-validations="required" />
+                              <input class="form-control" id="fechaReserva" type="text" value="<%=misViajes.getFecha_reserva()%>">
                               <label for="fechaReserva">Fecha de reserva</label>
-                              <div class="invalid-feedback" data-sb-feedback="fechaReserva:required">Se requiere una fecha de reserva</div>
+
                             </div>
                           </div>
                           <div class="col-md-8">
                             <div class="form-floating mb-3">
-                              <input class="form-control" id="origen" type="text" placeholder="Ciudad de origen..." data-sb-validations="required,email" />
+                              <input class="form-control" id="origen" type="text" value="<%=misViajes.getCiudad_origen()%>">
                               <label for="origen">Ciudad de origen </label>
-                              <div class="invalid-feedback" data-sb-feedback="origen:required">Se necesita una ciudad de origen.</div>
                             </div>
                           </div>
                         </div>
@@ -75,16 +75,14 @@
                         <div class="row">
                           <div class="col-md-4"> <!-- Agregada la clase col-md-4 -->
                             <div class="form-floating mb-3">
-                              <input class="form-control" id="fechaViaje" type="text" placeholder="Fecha de viaje ..." data-sb-validations="required" />
+                              <input class="form-control" id="fechaViaje" type="text" value="<%=misViajes.getFecha_viaje()%>">
                               <label for="fechaViaje">Fecha de viaje</label>
-                              <div class="invalid-feedback" data-sb-feedback="fechaViaje:required">Se requiere una fecha de viaje</div>
                             </div>
                           </div>
                           <div class="col-md-8"> <!-- Agregada la clase col-md-8 -->
                             <div class="form-floating mb-3">
-                              <input class="form-control" id="destino" type="text" placeholder="Ciudad de origen..." data-sb-validations="required" />
+                              <input class="form-control" id="destino" type="text" value="<%=misViajes.getCiudad_destino()%>">
                               <label for="destino">Ciudad de destino</label>
-                              <div class="invalid-feedback" data-sb-feedback="destino:required">Se necesita una ciudad de destino.</div>
                             </div>
                           </div>
                         </div>
@@ -92,37 +90,34 @@
                         <div class="row">
                           <div class="col-md-4"> <!-- Agregada la clase col-md-4 -->
                             <div class="form-floating mb-3">
-                              <input class="form-control" id="boletos" type="text" placeholder="Cant. boletos..." data-sb-validations="required" />
+                              <input class="form-control" id="boletos" type="text" value="<%=misViajes.getNumero_de_boletos()%>">
                               <label for="boletos">N° Boletos</label>
-                              <div class="invalid-feedback" data-sb-feedback="boletos:required">Ingrese una cantidad de boletos</div>
                             </div>
                           </div>
                           <div class="col-md-8"> <!-- Agregada la clase col-md-8 -->
                             <div class="form-floating mb-3">
-                              <input class="form-control" id="aseguradora" type="text" placeholder="Aseguradora" data-sb-validations="required" />
+                              <input class="form-control" id="aseguradora" type="text"  value="<%=misViajes.getEmpresaSeguro().getNombre()%>">
                               <label for="aseguradora">Aseguradora</label>
-                              <div class="invalid-feedback" data-sb-feedback="aseguradora:required">Se necesita una aseguradora.</div>
                             </div>
                           </div>
                         </div>
                         <div class="row">
                           <div class="col-md-4"> <!-- Agregada la clase col-md-4 -->
                             <div class="form-floating mb-3">
-                              <input class="form-control" id="preciounitario" type="text" placeholder="Precio unitario..." data-sb-validations="required" />
+                              <input class="form-control" id="preciounitario" type="text" value="<%=misViajes.getCosto_unitario()%>">
                               <label for="preciounitario">Precio</label>
-                              <div class="invalid-feedback" data-sb-feedback="preciounitario:required">Ingrese una precio de viaje</div>
                             </div>
                           </div>
                           <div class="col-md-8"> <!-- Agregada la clase col-md-8 -->
                             <h7 class="section-subheading text-danger">Su viaje costaría:</h7>
                             <div class="form-floating mb-3" style="text-align: right;">
-                              <input class="form-control" id="precio" type="text" placeholder="Ingrese el precio..." data-sb-validations="required" />
+                              <input class="form-control" id="precio" type="text" value="<%=misViajes.getCosto_unitario() * misViajes.getNumero_de_boletos()%>">
                               <label for="precio">Costo Total</label>
                             </div>
                           </div>
                         </div>
                         <div class="form-group d-flex align-items-center justify-content-center mt-4 mb-0">
-                          <a button class="btn btn-success text-white" type="button" href="index.html"><b>Guardar cambios</b></a>
+                          <a button class="btn btn-success text-white" type="submit"><b>Guardar cambios</b></a>
                         </div>
                       </form>
                       <br>

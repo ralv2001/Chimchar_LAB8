@@ -259,4 +259,40 @@ public class ViajesDao extends BaseDao {
         }
         return viajesUsuarioPlatinum;
     }
+
+    public MisViajes listarViaje(int id_viaje) {
+        MisViajes misViajes = null;
+
+        String sql = "SELECT * FROM mis_viajes v, empresa_seguro es WHERE v.empresa_seguro_id_empresa_seguro = es.id_empresa_seguro\n" +
+                "and id_mis_viajes = ?;";
+        try(Connection connection=this.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+
+            preparedStatement.setInt(1, id_viaje);
+
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+
+                while (resultSet.next()) {
+                    misViajes = new MisViajes();
+                    misViajes.setId_mis_viajes(resultSet.getInt(1));
+                    misViajes.setFecha_reserva(resultSet.getDate(2));
+                    misViajes.setFecha_viaje(resultSet.getDate(3));
+                    misViajes.setCiudad_origen(resultSet.getString(4));
+                    misViajes.setCiudad_destino(resultSet.getString(5));
+
+                    EmpresaSeguro empresaSeguro = new EmpresaSeguro();
+                    empresaSeguro.setId_empresa_seguro(resultSet.getInt(6));
+                    empresaSeguro.setNombre(resultSet.getString(11));
+
+                    misViajes.setCosto_unitario(resultSet.getDouble(8));
+                    misViajes.setNumero_de_boletos(resultSet.getInt(9));
+                    misViajes.setEmpresaSeguro(empresaSeguro);
+                }
+            }
+        }
+        catch (SQLException e){
+            e.printStackTrace();
+        }
+        return misViajes;
+    }
 }
