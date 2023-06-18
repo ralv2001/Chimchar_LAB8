@@ -1,4 +1,6 @@
-<%--
+<%@ page import="com.example.chimchar_lab8.models.daos.Viajes.ViajesDao" %>
+<%@ page import="com.example.chimchar_lab8.models.beans.Viajes.MisViajes" %>
+<%@ page import="java.util.ArrayList" %><%--
   Created by IntelliJ IDEA.
   User: milene
   Date: 17/06/2023
@@ -6,7 +8,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<jsp:useBean id="personaSession" type="com.example.chimchar_lab8.models.beans.Usuarios" scope="session" class="com.example.chimchar_lab8.models.beans.Usuarios"/>
+<jsp:useBean id="personaSession" type="com.example.chimchar_lab8.models.beans.Usuarios.Usuarios" scope="session" class="com.example.chimchar_lab8.models.beans.Usuarios.Usuarios"/>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -34,7 +36,7 @@
                     <div class="badge bg-gradient-primary-to-secondary text-white mb-4"><div class="text-uppercase">Normal </div></div>
                     <span style="margin-right: 10px;"></span>
                     <span style="margin-right: 10px;"></span>
-                    <a class="navbar-brand" href="index.html"><span class="fw-bolder text-white">Bienvenido @Usuario </span></a>
+                    <a class="navbar-brand" href="index.html"><span class="fw-bolder text-white">Bienvenido <%=personaSession.getNombre() + " " + personaSession.getApellido()%> </span></a>
                     <br>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -46,6 +48,7 @@
             </nav>
             <br>
             <br>
+
 
             <section class="page-section" id="viajes" >
                 <div class="container" >
@@ -84,106 +87,29 @@
                                             <th class="text-center"> </th>
                                         </tr>
                                     </thead>
+
+                                    <% int idUsuario = personaSession.getId_usuarios();%>
+                                    <% ViajesDao viajesDao = new ViajesDao();%>
+                                    <% ArrayList<MisViajes> viajesPorUsuario = viajesDao.listarViajesUsuarioNormal(idUsuario) ;%>
+
                                     <tbody>
+                                        <% for (MisViajes listaViajes : viajesPorUsuario) {%>
                                         <tr>
-                                            <td class="text-center">12345678</td>
-                                            <td class="text-center">15/05/2023</td>
-                                            <td class="text-center">31/08/2023</td>
-                                            <td class="text-center">Lima</td>
-                                            <td class="text-center">Buenos Aires</td>
-                                            <td class="text-center">Rimac</td>
-                                            <td class="text-center">2</td>
-                                            <td class="text-center">500</td>
-                                            <td class="text-center">Editar</td>
+                                            <td class="text-center"><%=listaViajes.getId_mis_viajes()%></td>
+                                            <td class="text-center"><%=listaViajes.getFecha_reserva()%></td>
+                                            <td class="text-center"><%=listaViajes.getFecha_viaje()%></td>
+                                            <td class="text-center"><%=listaViajes.getCiudad_origen()%></td>
+                                            <td class="text-center"><%=listaViajes.getCiudad_destino()%></td>
+                                            <td class="text-center"><%=listaViajes.getEmpresaSeguro().getNombre()%></td>
+                                            <td class="text-center"><%=listaViajes.getNumero_de_boletos()%></td>
+                                            <td class="text-center"><%=listaViajes.getCosto_unitario()%></td>
+                                            <td class="text-center">
+                                                <a href="<%=request.getContextPath()%>/ViajesServlet?a=editar" type="button" class="btn btn-light">
+                                                    <i class="bi bi-pencil-square"></i>
+                                                </a>
+                                            </td>
                                         </tr>
-                                        <tr>
-                                            <td class="text-center">12345678</td>
-                                            <td class="text-center">15/05/2023</td>
-                                            <td class="text-center">31/08/2023</td>
-                                            <td class="text-center">Lima</td>
-                                            <td class="text-center">Buenos Aires</td>
-                                            <td class="text-center">Rimac</td>
-                                            <td class="text-center">2</td>
-                                            <td class="text-center">500</td>
-                                            <td class="text-center">Editar</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-center">12345678</td>
-                                            <td class="text-center">15/05/2023</td>
-                                            <td class="text-center">31/08/2023</td>
-                                            <td class="text-center">Lima</td>
-                                            <td class="text-center">Buenos Aires</td>
-                                            <td class="text-center">Rimac</td>
-                                            <td class="text-center">2</td>
-                                            <td class="text-center">500</td>
-                                            <td class="text-center">Editar</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-center">12345678</td>
-                                            <td class="text-center">15/05/2023</td>
-                                            <td class="text-center">31/08/2023</td>
-                                            <td class="text-center">Lima</td>
-                                            <td class="text-center">Buenos Aires</td>
-                                            <td class="text-center">Rimac</td>
-                                            <td class="text-center">2</td>
-                                            <td class="text-center">500</td>
-                                            <td class="text-center">Editar</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-center">12345678</td>
-                                            <td class="text-center">15/05/2023</td>
-                                            <td class="text-center">31/08/2023</td>
-                                            <td class="text-center">Lima</td>
-                                            <td class="text-center">Buenos Aires</td>
-                                            <td class="text-center">Rimac</td>
-                                            <td class="text-center">2</td>
-                                            <td class="text-center">500</td>
-                                            <td class="text-center">Editar</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-center">12345678</td>
-                                            <td class="text-center">15/05/2023</td>
-                                            <td class="text-center">31/08/2023</td>
-                                            <td class="text-center">Lima</td>
-                                            <td class="text-center">Buenos Aires</td>
-                                            <td class="text-center">Rimac</td>
-                                            <td class="text-center">2</td>
-                                            <td class="text-center">500</td>
-                                            <td class="text-center">Editar</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-center">12345678</td>
-                                            <td class="text-center">15/05/2023</td>
-                                            <td class="text-center">31/08/2023</td>
-                                            <td class="text-center">Lima</td>
-                                            <td class="text-center">Buenos Aires</td>
-                                            <td class="text-center">Rimac</td>
-                                            <td class="text-center">2</td>
-                                            <td class="text-center">500</td>
-                                            <td class="text-center">Editar</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-center">12345678</td>
-                                            <td class="text-center">15/05/2023</td>
-                                            <td class="text-center">31/08/2023</td>
-                                            <td class="text-center">Lima</td>
-                                            <td class="text-center">Buenos Aires</td>
-                                            <td class="text-center">Rimac</td>
-                                            <td class="text-center">2</td>
-                                            <td class="text-center">500</td>
-                                            <td class="text-center">Editar</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-center">12345678</td>
-                                            <td class="text-center">15/05/2023</td>
-                                            <td class="text-center">31/08/2023</td>
-                                            <td class="text-center">Lima</td>
-                                            <td class="text-center">Buenos Aires</td>
-                                            <td class="text-center">Rimac</td>
-                                            <td class="text-center">2</td>
-                                            <td class="text-center">500</td>
-                                            <td class="text-center">Editar</td>
-                                        </tr>
+                                        <% } %>
                                     </tbody>
                                 </table>
                             </div>

@@ -2,16 +2,18 @@ package com.example.chimchar_lab8.models.beans.Viajes;
 
 import com.example.chimchar_lab8.models.beans.Usuarios.Usuarios;
 
+import java.util.Date;
+
 public class MisViajes {
 
     private int id_mis_viajes;
-    private String fecha_reserva;
-    private String fecha_viaje;
+    private Date fecha_reserva;
+    private Date fecha_viaje;
     private String ciudad_origen;
     private String ciudad_destino;
     private EmpresaSeguro empresaSeguro;
     private Usuarios usuarios;
-    private double costo_total;
+    private double costo_unitario;
     private int numero_de_boletos;
 
 
@@ -23,19 +25,19 @@ public class MisViajes {
         this.id_mis_viajes = id_mis_viajes;
     }
 
-    public String getFecha_reserva() {
+    public Date getFecha_reserva() {
         return fecha_reserva;
     }
 
-    public void setFecha_reserva(String fecha_reserva) {
+    public void setFecha_reserva(Date fecha_reserva) {
         this.fecha_reserva = fecha_reserva;
     }
 
-    public String getFecha_viaje() {
+    public Date getFecha_viaje() {
         return fecha_viaje;
     }
 
-    public void setFecha_viaje(String fecha_viaje) {
+    public void setFecha_viaje(Date fecha_viaje) {
         this.fecha_viaje = fecha_viaje;
     }
 
@@ -71,12 +73,12 @@ public class MisViajes {
         this.usuarios = usuarios;
     }
 
-    public double getCosto_total() {
-        return costo_total;
+    public double getCosto_unitario() {
+        return costo_unitario;
     }
 
-    public void setCosto_total(double costo_total) {
-        this.costo_total = costo_total;
+    public void setCosto_unitario(double costo_unitario) {
+        this.costo_unitario = costo_unitario;
     }
 
     public int getNumero_de_boletos() {

@@ -68,19 +68,9 @@ public class LoginDao extends BaseDao{
             pstmt.setString(2,hashedPassword);
 
             try (ResultSet rs = pstmt.executeQuery()) {
-                if (rs.next()) {
-                    usuario = new Usuarios();
-                    usuario.setId_usuarios(rs.getInt(1));
-                    usuario.setNombre(rs.getString(2));
-                    usuario.setApellido(rs.getString(3));
-                    usuario.setEdad(rs.getInt(4));
-                    usuario.setCodigo(rs.getInt(5));
-                    usuario.setCorreo(rs.getString(6));
-                    usuario.setEspecialidad(rs.getString(7));
-                    usuario.setContrasenia(rs.getString(8));
-                    Status status = new Status();
-                    status.setId_status(rs.getInt(9));
-                    usuario.setStatus(status);
+                if(rs.next()){
+                    int personaId = rs.getInt(1);
+                    usuario = this.obtenerUsuario(personaId);
                 }
             }
 
